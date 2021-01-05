@@ -3,7 +3,7 @@
     <h1>{{ title }}</h1>
     <p class="date">{{ date }}</p>
     <p>{{ description }}</p>
-    <p>Rating: {{ rating }}</p>
+    <base-emoji :emoji="emojiNumber" class="w-8 h-8 mt-4" />
   </li>
 </template>
 
@@ -25,6 +25,11 @@ export default {
     rating: {
       type: Number,
       required: true,
+    },
+  },
+  computed: {
+    emojiNumber() {
+      return `#${this.rating}`;
     },
   },
 };

@@ -18,7 +18,7 @@
 
 <style scoped>
 a {
-  @apply rounded-full h-20 w-20 flex items-center justify-center bg-green-800 text-green-50 hover:bg-green-600 transition-colors;
+  @apply rounded-full h-16 w-16 flex items-center justify-center bg-green-800 text-green-50 hover:bg-green-600 transition-colors;
 }
 
 svg {
