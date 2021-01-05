@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="flex flex-col">
     <ul v-if="hasEpisodes">
       <episode-item
         v-for="episode in episodes"
@@ -10,15 +10,18 @@
         :rating="episode.rating"
       />
     </ul>
+    <the-add-button class="self-end" />
   </section>
 </template>
 
 <script>
 import EpisodeItem from "../../components/episodes/EpisodeItem.vue";
+import TheAddButton from "../../components/layout/TheAddButton.vue";
 
 export default {
   components: {
     EpisodeItem,
+    TheAddButton,
   },
   computed: {
     episodes() {
