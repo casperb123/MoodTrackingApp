@@ -5,7 +5,7 @@ export default {
       title: data.title,
       description: data.description,
       rating: data.rating,
-      timestamp: data.timestamp,
+      date: data.date,
     };
 
     const response = await fetch(
@@ -43,7 +43,7 @@ export default {
         title: responseData[key].title,
         description: responseData[key].description,
         rating: responseData[key].rating,
-        timestamp: responseData[key].timestamp,
+        date: responseData[key].date,
       };
       episodes.push(episode);
     }
