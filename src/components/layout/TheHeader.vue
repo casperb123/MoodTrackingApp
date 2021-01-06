@@ -10,6 +10,6 @@
 
 <style scoped>
 h1 {
-  @apply text-center text-2xl p-3;
+  @apply text-center text-2xl md:text-3xl p-3;
 }
 </style>

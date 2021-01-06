@@ -46,7 +46,7 @@ li {
 }
 
 h1 {
-  @apply font-bold;
+  @apply font-semibold text-lg;
 }
 
 .date {

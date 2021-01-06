@@ -115,7 +115,7 @@ export default {
 
 <style scoped>
 label {
-  @apply block mb-2;
+  @apply block mb-2 font-semibold;
 }
 
 input,
@@ -124,6 +124,10 @@ textarea {
 }
 
 .error {
-  @apply text-red-500 border-red-500;
+  @apply border-red-500;
+}
+
+label.error {
+  @apply text-red-500;
 }
 </style>
