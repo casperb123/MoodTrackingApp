@@ -1,6 +1,6 @@
 <template>
   <section class="flex flex-col">
-    <ul v-if="hasEpisodes">
+    <ul v-if="hasEpisodes" class="flex flex-row flex-wrap gap-5 mb-5">
       <episode-item
         v-for="episode in episodes"
         :key="episode.id"
@@ -8,9 +8,11 @@
         :description="episode.description"
         :date="episode.date"
         :rating="episode.rating"
+        class="flex-1"
       />
       <router-view />
     </ul>
+    <h2 v-else>Du har endnu ikke oprettet en aktivitet</h2>
     <the-add-button class="self-end" :to="addLink" />
   </section>
 </template>
@@ -45,3 +47,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+h2 {
+  @apply text-center text-xl mb-5;
+}
+</style>

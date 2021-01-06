@@ -39,7 +39,7 @@
     </div>
     <div class="form-control self-end flex gap-x-1">
       <base-button type="submit">Gem</base-button>
-      <base-button flat link to="/episodes">Afbryd</base-button>
+      <base-button flat link to="/episodes">Tilbage</base-button>
     </div>
   </form>
 </template>
@@ -120,7 +120,7 @@ label {
 
 input,
 textarea {
-  @apply block w-full max-w-full border-2 border-green-400 p-2 rounded-md;
+  @apply block w-full max-w-full border-2 border-green-400 p-2 rounded-md transition-all;
 }
 
 .error {

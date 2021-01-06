@@ -42,7 +42,7 @@ export default {
 
 <style scoped>
 li {
-  @apply bg-white p-5 rounded mb-5;
+  @apply bg-white p-5 rounded min-w-full md:min-w-max;
 }
 
 h1 {

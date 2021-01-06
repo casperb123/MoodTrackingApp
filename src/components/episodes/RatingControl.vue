@@ -52,7 +52,7 @@ ul {
 }
 
 button {
-  @apply text-gray-400 hover:text-yellow-500 transition-colors outline-none;
+  @apply text-gray-400 hover:text-yellow-500 focus:text-yellow-500 transition-colors outline-none;
 }
 
 .active button {

@@ -288,8 +288,12 @@
   </svg>
 
   <the-header />
-  <div class="container mx-auto mt-12 px-5">
-    <router-view />
+  <div class="container mx-auto mt-5 px-5 md:px-0">
+    <router-view v-slot="{ Component }">
+      <transition name="route" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </div>
 </template>
 
@@ -302,3 +306,26 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.route-enter-from {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.route-enter-active,
+.route-leave-active {
+  transition: all 0.3s ease;
+}
+
+.route-enter-to,
+.route-leave.from {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.route-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+}
+</style>
