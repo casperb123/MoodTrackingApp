@@ -1,21 +1,24 @@
 <template>
   <section>
-    <base-spinner v-if="isLoading" />
-    <div v-else class="flex flex-col">
-      <ul v-if="hasEpisodes" class="flex flex-row flex-wrap gap-5 mb-5">
-        <episode-item
-          v-for="episode in episodes"
-          :key="episode.id"
-          :title="episode.title"
-          :description="episode.description"
-          :date="episode.date"
-          :rating="episode.rating"
-          class="flex-1"
-        />
-        <router-view />
-      </ul>
-      <h2 v-else>Du har endnu ikke oprettet en aktivitet</h2>
-      <the-add-button class="self-end" :to="addLink" />
+    <p v-if="!!error" class="error">{{ error }}</p>
+    <div v-else>
+      <base-spinner v-if="isLoading" />
+      <div v-else class="flex flex-col">
+        <ul v-if="hasEpisodes" class="flex flex-row flex-wrap gap-5 mb-5">
+          <episode-item
+            v-for="episode in episodes"
+            :key="episode.id"
+            :title="episode.title"
+            :description="episode.description"
+            :date="episode.date"
+            :rating="episode.rating"
+            class="flex-1"
+          />
+          <router-view />
+        </ul>
+        <h2 v-else>Du har endnu ikke oprettet en aktivitet</h2>
+        <the-add-button class="self-end" :to="addLink" />
+      </div>
     </div>
   </section>
 </template>
@@ -32,6 +35,7 @@ export default {
   data() {
     return {
       isLoading: false,
+      error: null,
     };
   },
   computed: {
@@ -51,7 +55,11 @@ export default {
   methods: {
     async loadEpisodes() {
       this.isLoading = true;
-      await this.$store.dispatch("episodes/loadEpisodes");
+      try {
+        await this.$store.dispatch("episodes/loadEpisodes");
+      } catch (error) {
+        this.error = error.message || "Noget gik galt!";
+      }
       this.isLoading = false;
     },
   },
@@ -59,7 +67,12 @@ export default {
 </script>
 
 <style scoped>
-h2 {
+h2,
+.error {
   @apply text-center text-xl mb-5;
+}
+
+.error {
+  @apply text-red-500;
 }
 </style>
