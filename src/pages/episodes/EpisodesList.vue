@@ -9,8 +9,9 @@
         :date="episode.date"
         :rating="episode.rating"
       />
+      <router-view />
     </ul>
-    <the-add-button class="self-end" />
+    <the-add-button class="self-end" :to="addLink" />
   </section>
 </template>
 
@@ -29,6 +30,9 @@ export default {
     },
     hasEpisodes() {
       return this.$store.getters["episodes/hasEpisodes"];
+    },
+    addLink() {
+      return "/add";
     },
   },
   created() {

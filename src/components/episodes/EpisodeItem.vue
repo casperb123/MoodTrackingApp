@@ -1,9 +1,11 @@
 <template>
   <li>
-    <h1>{{ title }}</h1>
-    <p class="date">{{ date }}</p>
-    <p>{{ description }}</p>
-    <base-emoji :emoji="emojiNumber" class="w-8 h-8 mt-4" />
+    <slot>
+      <h1>{{ title }}</h1>
+      <p class="date">{{ dateFormated }}</p>
+      <p>{{ description }}</p>
+      <base-emoji :emoji="emojiNumber" class="w-8 h-8 mt-4 text-yellow-400" />
+    </slot>
   </li>
 </template>
 
@@ -30,6 +32,9 @@ export default {
   computed: {
     emojiNumber() {
       return `#${this.rating}`;
+    },
+    dateFormated() {
+      return moment(this.date).calendar();
     },
   },
 };
