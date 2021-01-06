@@ -27,7 +27,7 @@ export default {
   },
   async loadEpisodes(context) {
     const response = await fetch(
-      "https://moodtrackingapp-6960a-default-rtdb.firebaseio.com/episodes.jso"
+      "https://moodtrackingapp-6960a-default-rtdb.firebaseio.com/episodes.json"
     );
     const responseData = await response.json();
 
