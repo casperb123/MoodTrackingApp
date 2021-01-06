@@ -69,7 +69,7 @@ export default {
 <style scoped>
 h2,
 .error {
-  @apply text-center text-xl mb-5;
+  @apply text-center text-xl md:text-2xl font-semibold mb-5;
 }
 
 .error {
