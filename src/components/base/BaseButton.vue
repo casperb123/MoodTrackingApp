@@ -32,7 +32,7 @@ export default {
 <style scoped>
 button,
 a {
-  @apply px-5 py-3 rounded-md bg-green-800 text-green-50 hover:bg-green-600 hover:text-white transition-colors;
+  @apply px-5 py-3 rounded-md bg-green-800 text-green-50 text-center hover:bg-green-600 hover:text-white transition-colors;
 }
 
 .flat {
