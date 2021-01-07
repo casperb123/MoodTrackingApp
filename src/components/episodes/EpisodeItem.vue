@@ -11,7 +11,12 @@
             class="w-8 h-8 mt-4 text-yellow-400"
           />
         </div>
-        <base-button round @click="deleteEpisode" class="place-self-start">
+        <base-button
+          round
+          @click="deleteEpisode"
+          class="place-self-start disabled:opacity-50 disabled:cursor-wait"
+          :disabled="isDeleting"
+        >
           <svg class="w-10 h-10 transform rotate-45">
             <use xlink:href="#plusIcon" />
           </svg>
@@ -45,6 +50,11 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      isDeleting: false,
+    };
+  },
   computed: {
     emojiNumber() {
       return `#${this.rating}`;
@@ -55,6 +65,7 @@ export default {
   },
   methods: {
     deleteEpisode() {
+      this.isDeleting = true;
       this.$store.dispatch("episodes/deleteEpisode", {
         id: this.id,
       });
