@@ -1,17 +1,17 @@
 <template>
-  <li>
+  <li class="bg-white p-5 rounded min-w-full md:min-w-max">
     <slot>
-      <article>
+      <article class="flex justify-between">
         <div>
-          <h1>{{ title }}</h1>
-          <p class="date">{{ dateFormated }}</p>
+          <h1 class="font-semibold text-lg">{{ title }}</h1>
+          <p class="text-gray-400">{{ dateFormated }}</p>
           <p>{{ description }}</p>
           <base-emoji
             :emoji="emojiNumber"
             class="w-8 h-8 mt-4 text-yellow-400"
           />
         </div>
-        <base-button round @click="deleteEpisode">
+        <base-button round @click="deleteEpisode" class="place-self-start">
           <svg class="w-10 h-10 transform rotate-45">
             <use xlink:href="#plusIcon" />
           </svg>
@@ -62,25 +62,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-li {
-  @apply bg-white p-5 rounded min-w-full md:min-w-max;
-}
-
-h1 {
-  @apply font-semibold text-lg;
-}
-
-.date {
-  @apply text-gray-400;
-}
-
-article {
-  @apply flex justify-between;
-}
-
-article button {
-  @apply place-self-start;
-}
-</style>

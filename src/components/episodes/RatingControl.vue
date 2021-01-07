@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="flex justify-center gap-x-4 rounded-md">
     <li :class="{ active: activeOption === 1 }">
       <button type="button" @click="activate(1)">
         <base-emoji emoji="#1" class="w-12 h-12" />
@@ -47,10 +47,6 @@ export default {
 </script>
 
 <style scoped>
-ul {
-  @apply flex justify-center gap-x-4 rounded-md;
-}
-
 button {
   @apply text-gray-400 hover:text-yellow-500 focus:text-yellow-500 transition-colors outline-none;
 }

@@ -20,7 +20,16 @@
           <router-view />
         </div>
         <h2 v-else>Du har endnu ikke oprettet en aktivitet</h2>
-        <the-add-button class="self-end" :to="addLink" />
+        <base-button
+          round
+          link
+          to="/add"
+          class="flex items-center justify-center self-end"
+        >
+          <svg class="w-16 h-16">
+            <use xlink:href="#plusIcon" />
+          </svg>
+        </base-button>
       </div>
     </div>
   </section>
@@ -28,12 +37,10 @@
 
 <script>
 import EpisodeItem from "../../components/episodes/EpisodeItem.vue";
-import TheAddButton from "../../components/layout/TheAddButton.vue";
 
 export default {
   components: {
     EpisodeItem,
-    TheAddButton,
   },
   data() {
     return {
@@ -70,10 +77,6 @@ export default {
 </script>
 
 <style scoped>
-ul {
-  @apply w-full relative;
-}
-
 h2,
 .error {
   @apply text-center text-xl md:text-2xl font-semibold mb-5;
