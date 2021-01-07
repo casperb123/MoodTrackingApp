@@ -1,10 +1,22 @@
 <template>
   <li>
     <slot>
-      <h1>{{ title }}</h1>
-      <p class="date">{{ dateFormated }}</p>
-      <p>{{ description }}</p>
-      <base-emoji :emoji="emojiNumber" class="w-8 h-8 mt-4 text-yellow-400" />
+      <article>
+        <div>
+          <h1>{{ title }}</h1>
+          <p class="date">{{ dateFormated }}</p>
+          <p>{{ description }}</p>
+          <base-emoji
+            :emoji="emojiNumber"
+            class="w-8 h-8 mt-4 text-yellow-400"
+          />
+        </div>
+        <base-button round @click="deleteEpisode">
+          <svg class="w-10 h-10 transform rotate-45">
+            <use xlink:href="#plusIcon" />
+          </svg>
+        </base-button>
+      </article>
     </slot>
   </li>
 </template>
@@ -12,6 +24,10 @@
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
@@ -37,6 +53,13 @@ export default {
       return moment(this.date).calendar();
     },
   },
+  methods: {
+    deleteEpisode() {
+      this.$store.dispatch("episodes/deleteEpisode", {
+        id: this.id,
+      });
+    },
+  },
 };
 </script>
 
@@ -51,5 +74,13 @@ h1 {
 
 .date {
   @apply text-gray-400;
+}
+
+article {
+  @apply flex justify-between;
+}
+
+article button {
+  @apply place-self-start;
 }
 </style>

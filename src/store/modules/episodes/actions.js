@@ -1,6 +1,5 @@
 export default {
   async addEpisode(context, data) {
-    const id = "e3";
     const episodeData = {
       title: data.title,
       description: data.description,
@@ -15,15 +14,36 @@ export default {
         body: JSON.stringify(episodeData),
       }
     );
+    const responseData = await response.json();
 
     if (!response.ok) {
-      // error ...
+      const error = new Error(
+        responseData.message || "Tilføjning af episode fejlede"
+      );
+      throw error;
     }
 
     context.commit("addEpisode", {
       ...episodeData,
-      id: id,
+      id: responseData.name,
     });
+  },
+  async deleteEpisode(context, data) {
+    const response = await fetch(
+      `https://moodtrackingapp-6960a-default-rtdb.firebaseio.com/episodes/${data.id}.json`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    if (!response.ok) {
+      const error = new Error(
+        responseData.message || "Sletning af episoden fejlede"
+      );
+      throw error;
+    }
+
+    context.commit("deleteEpisode", data);
   },
   async loadEpisodes(context) {
     const response = await fetch(
