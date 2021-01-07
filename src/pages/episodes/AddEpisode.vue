@@ -45,12 +45,10 @@
 </template>
 
 <script>
-import EpisodeItem from "../../components/episodes/EpisodeItem.vue";
 import RatingControl from "../../components/episodes/RatingControl.vue";
 
 export default {
   components: {
-    EpisodeItem,
     RatingControl,
   },
   data() {
