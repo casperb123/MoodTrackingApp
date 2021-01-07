@@ -120,7 +120,7 @@ label {
 
 input,
 textarea {
-  @apply block w-full max-w-full border-2 border-green-400 p-2 rounded-md transition-all;
+  @apply block w-full max-w-full border-2 p-2 outline-none rounded-md transition-all focus:border-green-500;
 }
 
 .error {
